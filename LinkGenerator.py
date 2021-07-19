@@ -15,14 +15,16 @@ def save_info():
     
     Link_info = Link.get()
     Topic_info = Topic.get()
-    toprint=('<a href="{}" target="{}">{}<br></a>'.format(Link_info,Topic_info,Topic_info))
+    File_name=File.get()
+    Linker=('<a href="{}" target="{}">{}<br></a>'.format(Link_info,Topic_info,Topic_info))
+    
     
     print(Link_info,Topic_info)
     
-    file = open("user.html","w")
+    file = open(File_name+".html","w")
     file.write("<html>")
     file.write("<body>")
-    file.write(toprint)
+    file.write(Linker)
     
     file.write("</body>")
     file.write("</html>")
@@ -56,30 +58,35 @@ app = Tk()
 
 app.geometry("500x500")
 
-app.title("Python File Handling in Forms")
+app.title("Friendly-Engine")
 
-heading = Label(text="Python File Handling in Forms",fg="black",bg="yellow",width="500",height="3",font="10")
+heading = Label(text="Link Generator",fg="black",bg="yellow",width="500",height="3",font="10")
 
 heading.pack()
 
 Link_text = Label(text="Link :")
 Topic_text = Label(text="Topic :")
+File_text=Label(text="File Name :")
 
 
 Link_text.place(x=15,y=70)
 Topic_text.place(x=15,y=140)
+File_text.place(x=15,y=210)
 
 
 Link = StringVar()
 Topic = StringVar()
+File=StringVar()
 
 
 Link_entry = Entry(textvariable=Link,width="30")
 Topic_entry = Entry(textvariable=Topic,width="30")
+File_entry=Entry(textvariable=File,width="30")
 
 
 Link_entry.place(x=15,y=100)
 Topic_entry.place(x=15,y=180)
+File_entry.place(x=15,y=250)
 
 button = Button(app,text="Submit Data",command=save_info,width="30",height="2",bg="grey")
 
