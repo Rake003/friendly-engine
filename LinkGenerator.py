@@ -3,6 +3,10 @@
 Created on Sun Jul 18 22:05:47 2021
 
 @author: Rakesh Kumar
+
+
+Libraries Used:
+   # TKinter 
 """
 
 from tkinter import * 
@@ -60,7 +64,7 @@ app.geometry("500x500")
 
 app.title("Friendly-Engine")
 
-heading = Label(text="Link Generator",fg="black",bg="yellow",width="500",height="3",font="10")
+heading = Label(text="Link Generator",fg="black",bg="lightblue",width="500",height="3",font="10")
 
 heading.pack()
 
