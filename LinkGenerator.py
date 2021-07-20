@@ -43,14 +43,16 @@ Reference for list creation:
         outside_list[1].append(100)
         print(outside_list)  '''
 
-def add(Linkk,Topicc):
-    
+def add():
+    Linkk = Link.get()
+    Topicc = Topic.get()
     for i in range(0,1):
         temp_list=[]
         temp_list.append(Linkk)
         temp_list.append(Topicc)
         buffer_list.append(temp_list)
-    pass
+    print(len(buffer_list))
+    print(buffer_list)
 
 
 
@@ -103,18 +105,28 @@ def save_info():
     Link_info = Link.get()
     Topic_info = Topic.get()
     File_name=File.get()
-    Linker=('<a href="{}" target="{}">{}<br></a>'.format(Link_info,Topic_info,Topic_info))
+    #Linker=('<a href="{}" target="{}">{}<br></a>'.format(Link_info,Topic_info,Topic_info))
     
     
     print(Link_info,Topic_info)
     
     file = open(File_name+".html","w")
     file.write("<html>")
+    file.write("\n")
     file.write("<body>")
-    file.write(Linker)
+    file.write("\n")
+    for i in buffer_list:
+        (temp_link,temp_topic)=i
+        Linkerr=('<a href="{}" target="{}">{}<br></a>'.format(temp_link,temp_topic,temp_topic))
+        file.write(Linkerr)
+        file.write("\n")
+    #file.write(Linker)
+    file.write("\n")
     
     file.write("</body>")
+    file.write("\n")
     file.write("</html>")
+    file.write("\n")
     '''
 Reference:
         
@@ -179,9 +191,12 @@ Link_entry.place(x=15,y=100)
 Topic_entry.place(x=15,y=180)
 File_entry.place(x=15,y=250)
 
-button = Button(app,text="Submit Data",command=save_info,width="30",height="2",bg="grey")
+submit_button = Button(app,text="Submit Data",command=save_info,width="30",height="2",bg="grey")
 
-button.place(x=15,y=290)
+submit_button.place(x=15,y=290)
+
+add_button=Button(app,text="Add",command=add,width="30",height="2",bg="yellow")
+add_button.place(x=250,y=290)
 
 
 mainloop()
