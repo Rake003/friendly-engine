@@ -56,9 +56,44 @@ def save_info():
     
     file.write("<html>")
     file.write("\n")
+    file.write("""<head>
+		<style>
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
+			#link-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				min-height: 100%;
+				background-image: url("aladin_1.jpg");
+				background-size: 100% 100%;
+			}
+			h1 {
+				color: black;
+			}
+			a {
+				padding: 5px;
+				text-decoration: none;
+				color: gold;
+				font-size: 24px;
+				text-shadow: 0px 0px 10px yellow;
+			}
+			a:hover {
+				color: red;
+			}
+		</style>
+	</head>""")
+
+    file.write("\n")
     file.write("<body>")
     file.write("\n")
-    
+    file.write("<div id=""link-container"">")
+    file.write("\n")
+    file.write("<h1>"+File_name+"</h1>")
+    file.write("\n")
     #Accessing file data from buffer
     
     for i in buffer_list:
@@ -67,11 +102,15 @@ def save_info():
         file.write(Linkerr)
         file.write("\n")
     file.write("\n")
+    file.write("</div>")
+    file.write("\n")
     
     file.write("</body>")
     file.write("\n")
     file.write("</html>")
     file.write("\n")
+    
+    File_entry.delete(0,'end')
 
 #>>>>>>>>>>>>>>Tkinter 
 
